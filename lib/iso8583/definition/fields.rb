@@ -11,7 +11,7 @@ module ISO8583
 
   FIELDS = {
     1   => { length: 16,   codec: :AN,  type: :FIXED },
-    2   => { length: 19,   codec: :N,   type: :LLVAR },
+    2   => { length: 18,   codec: :N,   type: :LLVAR },
     3   => { length: 6,    codec: :N,   type: :FIXED },
     4   => { length: 12,   codec: :N,   type: :FIXED },
     5   => { length: 12,   codec: :N,   type: :FIXED },
