@@ -89,7 +89,7 @@ module ISO8583
     end
 
     def get_bmps_from_fields
-      Util.each_slice(hmp_from_fields, BMP_LENGTH)
+      Util.each_slice(bmp_from_fields, BMP_LENGTH)
     end
 
     def parse(message)
@@ -97,6 +97,7 @@ module ISO8583
       @mti.encode(message.slice!(0, MTI_LENGTH))
       @bitmap.encode(message.slice!(0, BMP_LENGTH))
       @data.encode(message)
+
       parse_fields
     end
 

@@ -1,16 +1,16 @@
 module ISO8583
   MTI_LENGTH = 4
-  BMP_LENGTH = 16
+  BMP_LENGTH = 64
   HDR_LENGTH = 12
   DTA_LENGTH = Float::INFINITY
 
   HDR_DEFINITION = { length: HDR_LENGTH, codec: :AN,  type: :FIXED }
   MTI_DEFINITION = { length: MTI_LENGTH, codec: :N,   type: :FIXED }
-  BMP_DEFINITION = { length: BMP_LENGTH, codec: :AN,  type: :FIXED }
+  BMP_DEFINITION = { length: BMP_LENGTH, codec: :B,  type: :FIXED }
   DTA_DEFINITION = { length: DTA_LENGTH, codec: :ALL, type: :VAR }
 
   FIELDS = {
-    1   => { length: 16,   codec: :AN,  type: :FIXED },
+    1   => { length: 64,   codec: :B,  type: :FIXED },
     2   => { length: 18,   codec: :N,   type: :LLVAR },
     3   => { length: 6,    codec: :N,   type: :FIXED },
     4   => { length: 12,   codec: :N,   type: :FIXED },
