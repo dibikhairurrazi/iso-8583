@@ -56,7 +56,7 @@ RSpec.describe ISO8583::Message do
       subject.set_field(7, '0821083216')
       subject.set_field(2, '8899')
       subject.set_field(105, 'ABC123')
-      expect(subject.to_s).to eql 'ISO0211000550810C20000000000000000000000008000000488990821083216006ABC123'
+      expect(subject.to_s).to eql 'ISO0211000550810110000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000488990821083216006ABC123'
     end
   end
 
@@ -83,7 +83,7 @@ RSpec.describe ISO8583::Message do
     context 'when has one bitmap' do
       let(:header)  { 'ISO021100055' }
       let(:mti)     { '0810' }
-      let(:bitmap)  { '0220000002000000' }
+      let(:bitmap)  { '0000001000100000000000000000000000000010000000000000000000000000' }
       let(:data)    { '082108321601579500301' }
       let(:message) { header + mti + bitmap + data }
       subject { described_class.new(message) }
@@ -98,8 +98,8 @@ RSpec.describe ISO8583::Message do
     context 'when has two bitmaps' do
       let(:header)  { 'ISO021100055' }
       let(:mti)     { '0810' }
-      let(:bitmap)  { '8220000002000000' }
-      let(:data)    { '0400000000000000082108321601579500301' }
+      let(:bitmap)  { '1000001000100000000000000000000000000010000000000000000000000000' }
+      let(:data)    { '00000100000000000000000000000000000000000000000000000000000000000400000000000000082108321601579500301' }
       let(:message) { header + mti + bitmap + data }
       subject { described_class.new(message) }
 
@@ -112,7 +112,7 @@ RSpec.describe ISO8583::Message do
 
     context 'when has not header' do
       let(:mti)     { '0810' }
-      let(:bitmap)  { '0220000002000000' }
+      let(:bitmap)  { '0000001000100000000000000000000000000010000000000000000000000000' }
       let(:data)    { '082108321601579500301' }
       let(:message) { mti + bitmap + data }
       subject { described_class.new(message) }

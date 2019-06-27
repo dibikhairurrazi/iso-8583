@@ -12,7 +12,7 @@ module ISO8583
   DTA_DEFINITION = { length: DTA_LENGTH, codec: :ALL, type: :VAR }
 
   FIELDS = {
-    1   => { length: 16,   codec: :AN,  type: :FIXED },
+    1   => { length: 64,   codec: :B,  type: :FIXED },
     2   => { length: 16,   codec: :N,   type: :LLVAR },
     3   => { length: 6,    codec: :N,   type: :FIXED },
     4   => { length: 12,   codec: :N,   type: :FIXED },

@@ -7,7 +7,7 @@ module ISO8583
 
     def ids
       return [] unless data
-      Util.indexes(bmp, /1/).map(&:next)
+      Util.indexes(data, /1/).map(&:next)
     end
   end
 end
