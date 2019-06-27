@@ -1,17 +1,19 @@
 module ISO8583
+  SOM_LENGTH = 3
+  HDR_LENGTH = 9
   MTI_LENGTH = 4
-  BMP_LENGTH = 16
-  HDR_LENGTH = 12
+  BMP_LENGTH = 64 
   DTA_LENGTH = Float::INFINITY
 
-  HDR_DEFINITION = { length: HDR_LENGTH, codec: :AN,  type: :FIXED }
+  SOM_DEFINITION = { length: SOM_LENGTH, codec: :A,   type: :FIXED }
+  HDR_DEFINITION = { length: HDR_LENGTH, codec: :N,   type: :FIXED }
   MTI_DEFINITION = { length: MTI_LENGTH, codec: :N,   type: :FIXED }
-  BMP_DEFINITION = { length: BMP_LENGTH, codec: :AN,  type: :FIXED }
+  BMP_DEFINITION = { length: BMP_LENGTH, codec: :B,   type: :FIXED }
   DTA_DEFINITION = { length: DTA_LENGTH, codec: :ALL, type: :VAR }
 
   FIELDS = {
     1   => { length: 16,   codec: :AN,  type: :FIXED },
-    2   => { length: 18,   codec: :N,   type: :LLVAR },
+    2   => { length: 16,   codec: :N,   type: :LLVAR },
     3   => { length: 6,    codec: :N,   type: :FIXED },
     4   => { length: 12,   codec: :N,   type: :FIXED },
     5   => { length: 12,   codec: :N,   type: :FIXED },
@@ -37,23 +39,23 @@ module ISO8583
     25  => { length: 2,    codec: :N,   type: :FIXED },
     26  => { length: 2,    codec: :N,   type: :FIXED },
     27  => { length: 1,    codec: :N,   type: :FIXED },
-    32  => { length: 6,    codec: :N,   type: :LLVAR },
+    32  => { length: 4,    codec: :N,   type: :LLVAR },
     33  => { length: 11,   codec: :N,   type: :LLVAR },
     34  => { length: 28,   codec: :NS,  type: :LLVAR },
     35  => { length: 37,   codec: :Z,   type: :LLVAR },
     36  => { length: 104,  codec: :N,   type: :LLLVAR },
     37  => { length: 12,   codec: :AN,  type: :FIXED },
     38  => { length: 6,    codec: :AN,  type: :FIXED },
-    39  => { length: 2,    codec: :AN,  type: :FIXED },
+    39  => { length: 2,    codec: :N,   type: :FIXED },
     40  => { length: 3,    codec: :AN,  type: :FIXED },
-    41  => { length: 16,   codec: :ANS, type: :FIXED },
+    41  => { length: 16,   codec: :AN,  type: :FIXED },
     42  => { length: 15,   codec: :ANS, type: :FIXED },
     43  => { length: 40,   codec: :ANS, type: :FIXED },
     44  => { length: 25,   codec: :AN,  type: :LLVAR },
     45  => { length: 76,   codec: :AN,  type: :LLVAR },
     46  => { length: 999,  codec: :AN,  type: :LLLVAR },
-    47  => { length: 999,  codec: :ANS,  type: :LLLVAR },
-    48  => { length: 999,  codec: :ANS,  type: :LLLVAR },
+    47  => { length: 210,  codec: :ANS, type: :LLLVAR },
+    48  => { length: 210,  codec: :ANS, type: :LLLVAR },
     49  => { length: 3,    codec: :N,   type: :FIXED },
     50  => { length: 3,    codec: :N,   type: :FIXED },
     51  => { length: 3,    codec: :N,   type: :FIXED },
@@ -68,7 +70,7 @@ module ISO8583
     60  => { length: 999,  codec: :ANS, type: :LLLVAR },
     61  => { length: 999,  codec: :ANS, type: :LLLVAR },
     62  => { length: 999,  codec: :ANS, type: :LLLVAR },
-    63  => { length: 9,    codec: :N,   type: :LLLVAR },
+    63  => { length: 6,    codec: :N,   type: :LLLVAR },
     64  => { length: 16,   codec: :AN,  type: :FIXED },
     65  => { length: 1,    codec: :AN,  type: :FIXED },
     66  => { length: 1,    codec: :N,   type: :FIXED },
@@ -95,7 +97,7 @@ module ISO8583
     87  => { length: 16,   codec: :N,   type: :FIXED },
     88  => { length: 16,   codec: :N,   type: :FIXED },
     89  => { length: 16,   codec: :N,   type: :FIXED },
-    90  => { length: 64,   codec: :N,   type: :FIXED },
+    90  => { length: 42,   codec: :N,   type: :FIXED },
     91  => { length: 1,    codec: :AN,  type: :FIXED },
     92  => { length: 2,    codec: :AN,  type: :FIXED },
     93  => { length: 5,    codec: :AN,  type: :FIXED },
